@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.grid-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  width: 600px;
+}
+
+.grid div {
+  border: 1px solid lightgrey;
+  display: inline-block;
+  aspect-ratio: 1;
+}
+
+.grid div.chicken {
+  background-image: url('../images/chicken.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.cars {
+  background-image: url('../images/car.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
