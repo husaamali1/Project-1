@@ -1,5 +1,6 @@
 // * Elements
 const grid = document.querySelector('.grid')
+const livesDisplay = document.querySelector('.lives-display')
 const cells = []
 
 // ! Variables
@@ -9,13 +10,28 @@ const cellcount = width * height
 const startingPos = 0
 let currentPos = startingPos
 
-
 // const car1Pos = 91
 // let car = car1Pos
 const car1Pos = [91, 95, 99]
 const car2Pos = [65, 69, 73]
 const car3Pos = [39, 43, 47]
 const car4Pos = [14, 17, 21]
+
+//! let lives = 3
+// let gameActive = false
+
+// function restVariables() {
+//   lives = 3
+//   livesDisplay.innerText = '❤️❤️❤️'
+// }
+
+// function startGame(evt) {
+//   if (!gameActive) {
+//     restVariables()
+//     gameActive = true
+//     const carHit = removeLive()
+//   }
+//! }
 
 
 // # Create a function to display my grid 
@@ -33,6 +49,7 @@ function createGrid() {
   car1Pos.forEach(pos => addCar(pos))
   car2Pos.forEach(pos => addCar(pos))
   car3Pos.forEach(pos => addCar(pos))
+  car4Pos.forEach(pos => addCar(pos))
   setInterval(moveCars, 500)
 }
 
@@ -69,7 +86,6 @@ function moveCars() {
     })
   })
 }
-
 
 // Chicken movements
 function keyPress(evt) {
