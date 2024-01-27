@@ -41,7 +41,6 @@ function resetGame() {
   addChicken(currentPos)
   livesDisplay.textContent = '❤️❤️❤️'
 }
-
 // endGame
 function endGame() {
   clearInterval(gameInterval)
@@ -58,12 +57,6 @@ function clearGrid(){
     cell.classList.remove('chicken', 'cars')
   })
 }
-// clearInterval(gameInterval)
-// removeCar()
-// lives = 3
-// livesDisplay.innerText = '❤️❤️❤️'
-
-
 function removeLive() {
   lives -= 1
   livesDisplay.textContent = '❤️'.repeat(lives)
@@ -71,7 +64,6 @@ function removeLive() {
     endGame()
   }
 }
-
 
 // # Create a function to display my grid 
 function createGrid() {
@@ -92,13 +84,14 @@ function createGrid() {
   // setInterval(moveCars, 500)
 }
 
-
 // ? Execution 
 function addChicken() {
   cells[currentPos].classList.add('chicken')
 }
 
 function removeChicken() {
+  if (!gameActive)
+    return
   cells[currentPos].classList.remove('chicken')
 }
 
@@ -129,16 +122,24 @@ function moveCars() {
     })
   })
 }
-startGame()
+// startGame()
 
 // check for win
+const winningPos = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
 
-
+function checkWin(){
+  if (winningPos.includes(currentPos)){
+    gameActive = false
+    clearInterval(gameInterval)
+    setTimeout(() => alert('You Have Won!!'), 100)
+  }
+}
 
 // Chicken movements
 function keyPress(evt) {
+  if (!gameActive)
+    return
   const key = evt.code
-
   removeChicken()
 
   if (key === 'ArrowUp' && currentPos >= width) {
@@ -150,8 +151,8 @@ function keyPress(evt) {
   } else if (key === 'ArrowRight' && currentPos % width !== width - 1) {
     currentPos++
   }
-
   addChicken()
+  checkWin()
 }
 
 // ? Events
@@ -161,4 +162,3 @@ resetbtn.addEventListener('click', resetGame)
 
 // Page load
 createGrid()
-
