@@ -1,6 +1,8 @@
 // * Elements
 const grid = document.querySelector('.grid')
 const livesDisplay = document.querySelector('.lives-display')
+const startbtn = document.querySelector('.start')
+const resetbtn = document.querySelector('.reset')
 const cells = []
 
 // ! Variables
@@ -17,21 +19,58 @@ const car2Pos = [65, 69, 73]
 const car3Pos = [39, 43, 47]
 const car4Pos = [14, 17, 21]
 
-//! let lives = 3
-// let gameActive = false
+let lives = 3
+let gameActive = false
+let gameInterval
 
-// function restVariables() {
-//   lives = 3
-//   livesDisplay.innerText = '❤️❤️❤️'
-// }
 
-// function startGame(evt) {
-//   if (!gameActive) {
-//     restVariables()
-//     gameActive = true
-//     const carHit = removeLive()
-//   }
-//! }
+// startGame
+function startGame() {
+  if (!gameActive) {
+    resetVariables()
+    gameActive = true
+    gameInterval = setInterval(moveCars, 500)
+    livesDisplay.textContent = '❤️❤️❤️'
+  }
+}
+// resetGame
+function resetGame() {
+  endGame()
+  resetVariables()
+  clearGrid()
+  addChicken(currentPos)
+  livesDisplay.textContent = '❤️❤️❤️'
+}
+
+// endGame
+function endGame() {
+  clearInterval(gameInterval)
+  gameActive = false
+  alert('Game over!!')
+}
+// reset
+function resetVariables() {
+  lives = 3
+  currentPos = startingPos
+}
+function clearGrid(){
+  cells.forEach(cell => {
+    cell.classList.remove('chicken', 'cars')
+  })
+}
+// clearInterval(gameInterval)
+// removeCar()
+// lives = 3
+// livesDisplay.innerText = '❤️❤️❤️'
+
+
+function removeLive() {
+  lives -= 1
+  livesDisplay.textContent = '❤️'.repeat(lives)
+  if (lives <= 0) {
+    endGame()
+  }
+}
 
 
 // # Create a function to display my grid 
@@ -50,7 +89,7 @@ function createGrid() {
   car2Pos.forEach(pos => addCar(pos))
   car3Pos.forEach(pos => addCar(pos))
   car4Pos.forEach(pos => addCar(pos))
-  setInterval(moveCars, 500)
+  // setInterval(moveCars, 500)
 }
 
 
@@ -83,9 +122,18 @@ function moveCars() {
       }
 
       addCar(carPositions[index])
+
+      if (carPositions[index] === currentPos) {
+        removeLive()
+      }
     })
   })
 }
+startGame()
+
+// check for win
+
+
 
 // Chicken movements
 function keyPress(evt) {
@@ -108,6 +156,8 @@ function keyPress(evt) {
 
 // ? Events
 document.addEventListener('keydown', keyPress)
+startbtn.addEventListener('click', startGame)
+resetbtn.addEventListener('click', resetGame)
 
 // Page load
 createGrid()

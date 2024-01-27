@@ -41,3 +41,11 @@ body {
 .lives-display{
   width: 96px;
 }
+ 
+
+.control-btns {
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
