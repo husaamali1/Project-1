@@ -24,16 +24,17 @@ let gameActive = false
 let gameInterval
 
 
-// startGame
+//! startGame
 function startGame() {
   if (!gameActive) {
     resetVariables()
     gameActive = true
     gameInterval = setInterval(moveCars, 500)
     livesDisplay.textContent = '❤️❤️❤️'
+    // console.log(gameActive)
   }
 }
-// resetGame
+//? resetGame
 function resetGame() {
   endGame()
   resetVariables()
@@ -41,7 +42,7 @@ function resetGame() {
   addChicken(currentPos)
   livesDisplay.textContent = '❤️❤️❤️'
 }
-// endGame
+//! endGame
 function endGame() {
   clearInterval(gameInterval)
   gameActive = false
@@ -52,7 +53,7 @@ function resetVariables() {
   lives = 3
   currentPos = startingPos
 }
-function clearGrid(){
+function clearGrid() {
   cells.forEach(cell => {
     cell.classList.remove('chicken', 'cars')
   })
@@ -65,11 +66,10 @@ function removeLive() {
   }
 }
 
-// # Create a function to display my grid 
+//  Create a function to display my grid 
 function createGrid() {
   for (let i = 0; i < cellcount; i++) {
     const cell = document.createElement('div')
-    cell.innerText = i
     cell.id = i
     cell.style.width = `${100 / width}%`
     cell.style.height = 'auto'
@@ -117,18 +117,21 @@ function moveCars() {
       addCar(carPositions[index])
 
       if (carPositions[index] === currentPos) {
+        removeChicken() 
         removeLive()
+        currentPos = startingPos
+        addChicken()
       }
     })
   })
 }
 // startGame()
 
-// check for win
+//! check for win
 const winningPos = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
 
-function checkWin(){
-  if (winningPos.includes(currentPos)){
+function checkWin() {
+  if (winningPos.includes(currentPos)) {
     gameActive = false
     clearInterval(gameInterval)
     setTimeout(() => alert('You Have Won!!'), 100)
@@ -155,10 +158,10 @@ function keyPress(evt) {
   checkWin()
 }
 
-// ? Events
+//! Events
 document.addEventListener('keydown', keyPress)
 startbtn.addEventListener('click', startGame)
 resetbtn.addEventListener('click', resetGame)
 
-// Page load
+//? Page load
 createGrid()
