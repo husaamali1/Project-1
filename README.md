@@ -69,7 +69,7 @@ Finding the perfect visual elements, such as the road image and life icons' plac
 
 ## Play Chicken Cross
 
-Experience the fun and challenge by playing Chicken Cross [here](https://husaamali1.github.io/Project-1/).
+Experience the fun and challenge by playing Chicken Cross [Here](https://husaamali1.github.io/Project-1/).
 
 
 ## Future Improvements
