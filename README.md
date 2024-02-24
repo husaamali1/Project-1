@@ -19,7 +19,7 @@ The game meets the following technical requirements:
 - Rendered in the browser without using HTML Canvas.
 - Built on a grid using JavaScript for a structured layout.
 - Logic for winning is designed, and the game visually displays which player won.
-- Organized with separate HTML, CSS, and JavaScript files.
+- Organised with separate HTML, CSS, and JavaScript files.
 - Adherence to KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles.
 - Deployed online for global access.
 
@@ -66,6 +66,11 @@ Finding the perfect visual elements, such as the road image and life icons' plac
 
 - Buttons and life icons placement require further refinement.
 - The reset button sometimes unexpectedly triggers a Game Over alert.
+
+## Play Chicken Cross
+
+Experience the fun and challenge by playing Chicken Cross [here](https://husaamali1.github.io/Project-1/).
+
 
 ## Future Improvements
 
