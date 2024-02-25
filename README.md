@@ -36,6 +36,7 @@ I will go ahead and show you how I planned my app. Firstly, I started drawing my
 ## Development Process
 
 On the first day, I started by sketching your game's layout using Excalidraw, which is an essential step for visualising the game's structure. This planning phase helps in defining the game's architecture and the elements it will contain. For creating the grid using JavaScript and the Document Object Model (DOM), I used  JavaScript. Here's a simplified example of how I have initiated my grid:
+
 <img src="./assets/gridfunction.png" width="400">
 
 
