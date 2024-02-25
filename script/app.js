@@ -76,6 +76,7 @@ function createGrid() {
     grid.append(cell)
     cells.push(cell)
   }
+
   addChicken(currentPos)
   car1Pos.forEach(pos => addCar(pos))
   car2Pos.forEach(pos => addCar(pos))
